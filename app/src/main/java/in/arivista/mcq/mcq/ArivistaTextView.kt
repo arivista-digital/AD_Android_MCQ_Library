@@ -3,6 +3,7 @@ package `in`.arivista.mcq.mcq
 import android.content.Context
 import android.support.v7.widget.AppCompatTextView
 import android.util.AttributeSet
+import android.widget.TextView
 
 class ArivistaTextView : AppCompatTextView {
 
