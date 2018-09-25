@@ -2,6 +2,7 @@ package `in`.arivista.mcq.mcq
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 
 class MainActivity : AppCompatActivity(),QuestionListener {
 
@@ -21,18 +22,20 @@ class MainActivity : AppCompatActivity(),QuestionListener {
         arivista_view.setChoiceType(choices,ChoiceType.MULTIPLE)
 
 
+        var submitBtn=findViewById(R.id.submit) as Button
+        var clearBtn=findViewById(R.id.submit) as Button
+        var revealBtn=findViewById(R.id.submit) as Button
 
+        submitBtn.setOnClickListener(){
+            arivista_view.setAnsColor()
+        }
+        clearBtn.setOnClickListener(){
 
+        }
 
-//        addText.setOnClickListener(){
-//        }
-//        addRadio.setOnClickListener(){
-//            arivista_view.addRadioButton()
-//        }
-//
-//        addChecked.setOnClickListener(){
-//            arivista_view.addCheckedBox()
-//        }
+        clearBtn.setOnClickListener(){
+
+        }
 
 
 

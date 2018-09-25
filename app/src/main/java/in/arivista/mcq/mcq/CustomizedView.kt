@@ -49,9 +49,9 @@ open class CustomizedView : LinearLayout {
     }
 
     fun addRadioButton(choice: String) {
-        val radioButton = Arivista_RadioButton(context)
+         radioButton = Arivista_RadioButton(context)
         //radioGrop.addView(radioButton)
-        radioButton.setText(choice)
+        radioButton!!.setText(choice)
         radioGrop?.addView(radioButton)
 
     }
@@ -80,5 +80,14 @@ open class CustomizedView : LinearLayout {
                 addCheckedBox(choice)
             }
         }
+    }
+
+    fun setAnsColor(){
+        val checkedRadioButtonId = radioGrop!!.getCheckedRadioButtonId()
+        val selectedView = findViewById(checkedRadioButtonId) as RadioButton
+        if(selectedView!!.isChecked){
+            radioButton!!.setAnswerColor(Arivista_RadioButton.radioProperties.RADIO_BUTTON_CORRECT_COLOR)
+        }
+
     }
 }
