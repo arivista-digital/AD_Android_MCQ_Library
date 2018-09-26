@@ -8,10 +8,13 @@ import android.widget.*
 import android.widget.RadioGroup
 
 
-open class CustomizedView : LinearLayout {
+open class Arivista_Custom_View : LinearLayout {
+
     var textview: ArivistaTextView? = null
     var radioButton: Arivista_RadioButton? = null
     var radioGroup: RadioGroup? = null
+
+    var radioProperties=RadioButtonProperties()
 
     var ctx: Context? = null
 
@@ -86,18 +89,20 @@ open class CustomizedView : LinearLayout {
     }
 
     //Set Answered Color Correct or Wrong
-    fun setAnsColor(choicesList: ArrayList<QuestionModal>) {
+    fun setSumbitAnswer(choicesList: ArrayList<QuestionModal>) {
         try {
             val checkedRadioButtonId = radioGroup!!.getCheckedRadioButtonId()
             if (checkedRadioButtonId != 0) {
                 radioButton = findViewById(radioGroup!!.checkedRadioButtonId) as Arivista_RadioButton
                 if (radioButton!!.isChecked) {
                     if (choicesList.get(checkedRadioButtonId - 1).isC_ans_w_ans)
-                        radioButton!!.setColor(Arivista_RadioButton.radioProperties.RADIO_BUTTON_CORRECT_COLOR)
+                        radioButton!!.setColor(radioProperties.RADIO_BUTTON_CORRECT_COLOR)
                     else
-                        radioButton!!.setColor(Arivista_RadioButton.radioProperties.RADIO_BUTTON_WRONG_COLOR)
+                        radioButton!!.setColor(radioProperties.RADIO_BUTTON_WRONG_COLOR)
+                    radioGropList()
+                } else {
+                    Toast.makeText(context, "Please to select answer", Toast.LENGTH_LONG).show()
                 }
-                radioGropList()
             } else {
                 Toast.makeText(context, "Please to select answer", Toast.LENGTH_LONG).show()
             }
@@ -110,9 +115,9 @@ open class CustomizedView : LinearLayout {
     //Reset colors in radio buttons
     fun radioGropList() {
         for (i in 0 until radioGroup!!.childCount) {
-            val b: Arivista_RadioButton = radioGroup!!.getChildAt(i) as Arivista_RadioButton
+            val b = radioGroup!!.getChildAt(i) as Arivista_RadioButton
             if (!b.isChecked) {
-                b.setColor(Arivista_RadioButton.radioProperties.RADIO_BUTTON_DEFAULT_COLOR)
+                b.setColor(radioProperties.RADIO_BUTTON_DEFAULT_COLOR)
                 b.isEnabled = false
             }
         }
@@ -121,26 +126,25 @@ open class CustomizedView : LinearLayout {
     //Clear Radio Checked
     fun radioClearChecked() {
         for (i in 0 until radioGroup!!.childCount) {
-            val b: Arivista_RadioButton = radioGroup!!.getChildAt(i) as Arivista_RadioButton
-            b.setColor(Arivista_RadioButton.radioProperties.RADIO_BUTTON_DEFAULT_COLOR)
-            b.isChecked = false
-            b.isEnabled = true
+            val b=  radioGroup!!.getChildAt(i) as Arivista_RadioButton
+            b.setColor(radioProperties.RADIO_BUTTON_DEFAULT_COLOR)
+            b.isEnabled=true
         }
+        radioGroup!!.clearCheck()
     }
 
     //Reveal Answer
     fun answerReveal(choicesList: ArrayList<QuestionModal>) {
         for (i in 0 until radioGroup!!.childCount) {
-            val b: Arivista_RadioButton = radioGroup!!.getChildAt(i) as Arivista_RadioButton
+            val b= radioGroup!!.getChildAt(i) as Arivista_RadioButton
             if (choicesList.get(i).isC_ans_w_ans) {
                 b.isChecked = true
-                b.setColor(Arivista_RadioButton.radioProperties.RADIO_BUTTON_CORRECT_COLOR)
+                b.setColor(radioProperties.RADIO_BUTTON_CORRECT_COLOR)
             } else {
-                b.setColor(Arivista_RadioButton.radioProperties.RADIO_BUTTON_DEFAULT_COLOR)
+                b.setColor(radioProperties.RADIO_BUTTON_DEFAULT_COLOR)
                 b.isChecked = false
                 b.isEnabled = false
             }
-
         }
     }
 }

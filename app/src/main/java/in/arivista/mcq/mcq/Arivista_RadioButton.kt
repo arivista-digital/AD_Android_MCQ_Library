@@ -7,7 +7,7 @@ import android.util.AttributeSet
 
 class Arivista_RadioButton : android.support.v7.widget.AppCompatRadioButton {
 
-    object radioProperties: RadioButtonProperties()
+    val radioProperties= RadioButtonProperties()
 
     private var mCircleRadius = Utils.dp2Px(6)
     private var mStrokeWidth = Utils.dp2Px(2)

@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity(),QuestionListener {
         choicesList.add(QuestionModal(3,"t",false))
         choicesList.add(QuestionModal(4,"gfh",false))
 
-        val arivista_view=findViewById(R.id.arivista_view) as CustomizedView
+        val arivista_view=findViewById(R.id.arivista_view) as Arivista_Custom_View
 
         arivista_view.setQuestion("how to implement Radio Buttons?");
         arivista_view.setChoiceType(choicesList,ChoiceType.SINGLE)
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity(),QuestionListener {
 
         //Answer Submit
         submitBtn.setOnClickListener(){
-            arivista_view.setAnsColor(choicesList)
+            arivista_view.setSumbitAnswer(choicesList)
         }
         //Clear Radio Buttons
         clearBtn.setOnClickListener(){
