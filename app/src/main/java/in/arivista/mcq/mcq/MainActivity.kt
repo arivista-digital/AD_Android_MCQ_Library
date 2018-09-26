@@ -12,35 +12,39 @@ class MainActivity : AppCompatActivity(),QuestionListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val choices= arrayListOf<String>("option1","option2","option3","option4")
+
+        val choicesList=ArrayList<QuestionModal>()
+        choicesList.add(QuestionModal(1,"s",true))
+        choicesList.add(QuestionModal(2,"r",false))
+        choicesList.add(QuestionModal(3,"t",false))
+        choicesList.add(QuestionModal(4,"gfh",false))
 
         val arivista_view=findViewById(R.id.arivista_view) as CustomizedView
 
         arivista_view.setQuestion("how to implement Radio Buttons?");
-        arivista_view.setChoiceType(choices,ChoiceType.SINGLE)
+        arivista_view.setChoiceType(choicesList,ChoiceType.SINGLE)
         arivista_view.setQuestion("how to implement Checked Box?");
-        arivista_view.setChoiceType(choices,ChoiceType.MULTIPLE)
+        arivista_view.setChoiceType(choicesList,ChoiceType.MULTIPLE)
 
 
         var submitBtn=findViewById(R.id.submit) as Button
-        var clearBtn=findViewById(R.id.submit) as Button
-        var revealBtn=findViewById(R.id.submit) as Button
+        var clearBtn=findViewById(R.id.clear) as Button
+        var revealBtn=findViewById(R.id.reveal) as Button
 
+        //Answer Submit
         submitBtn.setOnClickListener(){
-            arivista_view.setAnsColor()
+            arivista_view.setAnsColor(choicesList)
         }
+        //Clear Radio Buttons
         clearBtn.setOnClickListener(){
-
+            arivista_view.radioClearChecked()
         }
-
-        clearBtn.setOnClickListener(){
-
+        //Reveal Answers
+        revealBtn.setOnClickListener(){
+            arivista_view.answerReveal(choicesList)
         }
-
-
 
         //questionPresenter= QustionImplementation(this);
-
 
     }
 //Success Listener

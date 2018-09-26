@@ -49,11 +49,11 @@ class Arivista_RadioButton : android.support.v7.widget.AppCompatRadioButton {
         }
         if (mCircleRadius > mStrokeRadius)
             throw IllegalArgumentException("Outer radius can't be less than Inner Radius")
-        setDefalutColor(radioProperties.RADIO_BUTTON_DEFAULT_COLOR)
+        setColor(setColorDefault())
 
     }
 
-     fun setDefalutColor(value: Int){
+     fun setColor(value: Int){
          val drawable = RadioButtonDrawable.Builder()
                  .inAnimDuration(mInAnimDuration)
                  .outAnimDuration(mOutAnimDuration)
@@ -61,7 +61,7 @@ class Arivista_RadioButton : android.support.v7.widget.AppCompatRadioButton {
                  .innerRadius(mCircleRadius)
                  .strokeSize(mStrokeWidth)
                  .explodeCount(mExplodeCounts)
-                 .checkedColor(mCheckedColor)
+                 .checkedColor(value)
                  .unCheckedColor(mUnCheckedColor)
                  .outerPadding(mOuterPadding)
                  .build()
@@ -71,22 +71,13 @@ class Arivista_RadioButton : android.support.v7.widget.AppCompatRadioButton {
          drawable.setAnimEnable(true)
     }
 
-    fun setAnswerColor(value: Int){
-        val drawable = RadioButtonDrawable.Builder()
-                .inAnimDuration(mInAnimDuration)
-                .outAnimDuration(mOutAnimDuration)
-                .radius(mStrokeRadius)
-                .innerRadius(mCircleRadius)
-                .strokeSize(mStrokeWidth)
-                .explodeCount(mExplodeCounts)
-                .checkedColor(mCheckedColor)
-                .unCheckedColor(mUnCheckedColor)
-                .outerPadding(mOuterPadding)
-                .build()
-        drawable.setInEditMode(isInEditMode)
-        drawable.setAnimEnable(false)
-        buttonDrawable = drawable
-        drawable.setAnimEnable(true)
+    private fun setColorDefault(): Int {
+        return RadioButtonProperties().RADIO_BUTTON_DEFAULT_COLOR
+    }
+
+
+    private fun setColorAnswer(): Int {
+        return RadioButtonProperties().RADIO_BUTTON_CORRECT_COLOR
     }
 
     override fun toggle() {
@@ -95,7 +86,6 @@ class Arivista_RadioButton : android.support.v7.widget.AppCompatRadioButton {
         if (!isChecked) {
             super.toggle()
         }
-            mCheckedColor=RadioButtonProperties().RADIO_BUTTON_CORRECT_COLOR
     }
 
     override fun onSaveInstanceState(): Parcelable? {
