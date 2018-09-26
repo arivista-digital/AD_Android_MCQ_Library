@@ -98,11 +98,11 @@ open class CustomizedView : LinearLayout {
                         radioButton!!.setColor(Arivista_RadioButton.radioProperties.RADIO_BUTTON_WRONG_COLOR)
                 }
                 radioGropList()
-            }else{
-                Toast.makeText(context,"Please to select answer",Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(context, "Please to select answer", Toast.LENGTH_LONG).show()
             }
         } catch (e: Exception) {
-            Toast.makeText(context,"Please to select answer",Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "Please to select answer", Toast.LENGTH_LONG).show()
             e.printStackTrace()
         }
     }
@@ -113,6 +113,7 @@ open class CustomizedView : LinearLayout {
             val b: Arivista_RadioButton = radioGroup!!.getChildAt(i) as Arivista_RadioButton
             if (!b.isChecked) {
                 b.setColor(Arivista_RadioButton.radioProperties.RADIO_BUTTON_DEFAULT_COLOR)
+                b.isEnabled = false
             }
         }
     }
@@ -123,6 +124,7 @@ open class CustomizedView : LinearLayout {
             val b: Arivista_RadioButton = radioGroup!!.getChildAt(i) as Arivista_RadioButton
             b.setColor(Arivista_RadioButton.radioProperties.RADIO_BUTTON_DEFAULT_COLOR)
             b.isChecked = false
+            b.isEnabled = true
         }
     }
 
@@ -130,14 +132,14 @@ open class CustomizedView : LinearLayout {
     fun answerReveal(choicesList: ArrayList<QuestionModal>) {
         for (i in 0 until radioGroup!!.childCount) {
             val b: Arivista_RadioButton = radioGroup!!.getChildAt(i) as Arivista_RadioButton
-            if(choicesList.get(i).isC_ans_w_ans){
-                b.isChecked=true
+            if (choicesList.get(i).isC_ans_w_ans) {
+                b.isChecked = true
                 b.setColor(Arivista_RadioButton.radioProperties.RADIO_BUTTON_CORRECT_COLOR)
-            }else {
+            } else {
                 b.setColor(Arivista_RadioButton.radioProperties.RADIO_BUTTON_DEFAULT_COLOR)
                 b.isChecked = false
+                b.isEnabled = false
             }
-
 
         }
     }

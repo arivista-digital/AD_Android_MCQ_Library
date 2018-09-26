@@ -23,8 +23,8 @@ class MainActivity : AppCompatActivity(),QuestionListener {
 
         arivista_view.setQuestion("how to implement Radio Buttons?");
         arivista_view.setChoiceType(choicesList,ChoiceType.SINGLE)
-        arivista_view.setQuestion("how to implement Checked Box?");
-        arivista_view.setChoiceType(choicesList,ChoiceType.MULTIPLE)
+//        arivista_view.setQuestion("how to implement Checked Box?");
+//        arivista_view.setChoiceType(choicesList,ChoiceType.MULTIPLE)
 
 
         var submitBtn=findViewById(R.id.submit) as Button
