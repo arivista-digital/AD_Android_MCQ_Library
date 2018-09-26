@@ -13,8 +13,11 @@ open class Arivista_Custom_View : LinearLayout {
     var textview: ArivistaTextView? = null
     var radioButton: Arivista_RadioButton? = null
     var radioGroup: RadioGroup? = null
+    var submitBtn:Button?=null
+    var revealBtn:Button?=null
+    var clearBtn:Button?=null
 
-    var radioProperties=RadioButtonProperties()
+    var radioProperties = RadioButtonProperties()
 
     var ctx: Context? = null
 
@@ -51,27 +54,7 @@ open class Arivista_Custom_View : LinearLayout {
         addView(textView)
     }
 
-    //Add Radio Buttons
-    fun addRadioButton(choice: String) {
-        radioButton = Arivista_RadioButton(context)
-        //radioGroup.addView(radioButton)
-        radioButton!!.setText(choice)
-        radioGroup?.addView(radioButton)
-    }
-
-    //Add Check boxes
-    fun addCheckedBox(choice: String) {
-        val checkBox = ArivistaCheckedButton(context)
-        checkBox.setText(choice)
-        addView(checkBox)
-    }
-
-    //Set question Titls
-    fun setQuestion(quetion: String) {
-        addTextView(quetion)
-    }
-
-    //Add  Radio Buttons and checkboxes
+    //Add  radion Buttons and checkboxes
     fun setChoiceType(choices: ArrayList<QuestionModal>, choiceType: ChoiceType) {
         if (choiceType == ChoiceType.SINGLE) {
             View.inflate(context, R.layout.custom_radiobutton, this)
@@ -87,6 +70,36 @@ open class Arivista_Custom_View : LinearLayout {
             }
         }
     }
+    //Add Radio Buttons
+    fun addRadioButton(choice: String) {
+        radioButton = Arivista_RadioButton(context)
+        //radioGroup.addView(radioButton)
+        radioButton!!.setText(choice)
+        radioGroup?.addView(radioButton)
+
+        radioButton!!.setOnCheckedChangeListener() { compoundButton: CompoundButton, b: Boolean ->
+           //After number of question attend will calculated
+            if (b) {
+                submitBtn!!.isEnabled=true
+                clearBtn!!.isEnabled=true
+              //  Toast.makeText(context, "changed", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+    }
+
+    //Add Check boxes
+    fun addCheckedBox(choice: String) {
+        val checkBox = ArivistaCheckedButton(context)
+        checkBox.setText(choice)
+        addView(checkBox)
+    }
+
+    //Set question Titls
+    fun setQuestion(quetion: String) {
+        addTextView(quetion)
+    }
+
 
     //Set Answered Color Correct or Wrong
     fun setSumbitAnswer(choicesList: ArrayList<QuestionModal>) {
@@ -99,7 +112,7 @@ open class Arivista_Custom_View : LinearLayout {
                         radioButton!!.setColor(radioProperties.RADIO_BUTTON_CORRECT_COLOR)
                     else
                         radioButton!!.setColor(radioProperties.RADIO_BUTTON_WRONG_COLOR)
-                    radioGropList()
+                    radioGroupList()
                 } else {
                     Toast.makeText(context, "Please to select answer", Toast.LENGTH_LONG).show()
                 }
@@ -113,7 +126,7 @@ open class Arivista_Custom_View : LinearLayout {
     }
 
     //Reset colors in radio buttons
-    fun radioGropList() {
+    fun radioGroupList() {
         for (i in 0 until radioGroup!!.childCount) {
             val b = radioGroup!!.getChildAt(i) as Arivista_RadioButton
             if (!b.isChecked) {
@@ -126,9 +139,9 @@ open class Arivista_Custom_View : LinearLayout {
     //Clear Radio Checked
     fun radioClearChecked() {
         for (i in 0 until radioGroup!!.childCount) {
-            val b=  radioGroup!!.getChildAt(i) as Arivista_RadioButton
+            val b = radioGroup!!.getChildAt(i) as Arivista_RadioButton
             b.setColor(radioProperties.RADIO_BUTTON_DEFAULT_COLOR)
-            b.isEnabled=true
+            b.isEnabled = true
         }
         radioGroup!!.clearCheck()
     }
@@ -136,7 +149,7 @@ open class Arivista_Custom_View : LinearLayout {
     //Reveal Answer
     fun answerReveal(choicesList: ArrayList<QuestionModal>) {
         for (i in 0 until radioGroup!!.childCount) {
-            val b= radioGroup!!.getChildAt(i) as Arivista_RadioButton
+            val b = radioGroup!!.getChildAt(i) as Arivista_RadioButton
             if (choicesList.get(i).isC_ans_w_ans) {
                 b.isChecked = true
                 b.setColor(radioProperties.RADIO_BUTTON_CORRECT_COLOR)
@@ -145,6 +158,33 @@ open class Arivista_Custom_View : LinearLayout {
                 b.isChecked = false
                 b.isEnabled = false
             }
+        }
+    }
+
+    fun buttonInitialization(submit:Button,clear:Button,reveal:Button){
+        submitBtn=submit
+        clearBtn=clear
+        revealBtn=reveal
+    }
+
+    //Submit button controls
+    fun submitButtonControl(submit:Button,control:Boolean){
+        if(control){
+            submit.isEnabled=true
+        }
+    }
+
+    //Clear button controls
+    fun clearButtonControl(clear:Button,control:Boolean){
+        if(control){
+            clear.isEnabled=true
+        }
+    }
+
+    //Reveal button controls
+    fun revealButtonControl(reveal:Button,control:Boolean){
+        if(control){
+            reveal.isEnabled=true
         }
     }
 }

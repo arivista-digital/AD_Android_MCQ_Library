@@ -20,4 +20,6 @@
         <attr name="lrb_checkedColor" format="color"/>
         <attr name="lrb_unCheckedColor" format="color"/>
     </declare-styleable>
+
+
 </resources>

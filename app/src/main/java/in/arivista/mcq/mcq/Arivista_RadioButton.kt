@@ -1,4 +1,5 @@
 package `in`.arivista.mcq.mcq
+
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
@@ -7,7 +8,7 @@ import android.util.AttributeSet
 
 class Arivista_RadioButton : android.support.v7.widget.AppCompatRadioButton {
 
-    val radioProperties= RadioButtonProperties()
+    val radioProperties = RadioButtonProperties()
 
     private var mCircleRadius = Utils.dp2Px(6)
     private var mStrokeWidth = Utils.dp2Px(2)
@@ -44,8 +45,6 @@ class Arivista_RadioButton : android.support.v7.widget.AppCompatRadioButton {
             mOutAnimDuration = a.getInt(R.styleable.ArivistaRadioButton_lrb_outAnimDuration, mOutAnimDuration)
             mCheckedColor = a.getColor(R.styleable.ArivistaRadioButton_lrb_checkedColor, mCheckedColor)
             mUnCheckedColor = a.getColor(R.styleable.ArivistaRadioButton_lrb_unCheckedColor, mUnCheckedColor)
-            //            Boolean isChecked = a.getBoolean(R.styleable.androidc,false);
-            //            setChecked(isChecked);
         }
         if (mCircleRadius > mStrokeRadius)
             throw IllegalArgumentException("Outer radius can't be less than Inner Radius")
@@ -53,31 +52,26 @@ class Arivista_RadioButton : android.support.v7.widget.AppCompatRadioButton {
 
     }
 
-     fun setColor(value: Int){
-         val drawable = RadioButtonDrawable.Builder()
-                 .inAnimDuration(mInAnimDuration)
-                 .outAnimDuration(mOutAnimDuration)
-                 .radius(mStrokeRadius)
-                 .innerRadius(mCircleRadius)
-                 .strokeSize(mStrokeWidth)
-                 .explodeCount(mExplodeCounts)
-                 .checkedColor(value)
-                 .unCheckedColor(mUnCheckedColor)
-                 .outerPadding(mOuterPadding)
-                 .build()
-         drawable.setInEditMode(isInEditMode)
-         drawable.setAnimEnable(false)
-         buttonDrawable = drawable
-         drawable.setAnimEnable(true)
+    fun setColor(value: Int) {
+        val drawable = RadioButtonDrawable.Builder()
+                .inAnimDuration(mInAnimDuration)
+                .outAnimDuration(mOutAnimDuration)
+                .radius(mStrokeRadius)
+                .innerRadius(mCircleRadius)
+                .strokeSize(mStrokeWidth)
+                .explodeCount(mExplodeCounts)
+                .checkedColor(value)
+                .unCheckedColor(mUnCheckedColor)
+                .outerPadding(mOuterPadding)
+                .build()
+        drawable.setInEditMode(isInEditMode)
+        drawable.setAnimEnable(false)
+        buttonDrawable = drawable
+        drawable.setAnimEnable(true)
     }
 
     private fun setColorDefault(): Int {
         return RadioButtonProperties().RADIO_BUTTON_DEFAULT_COLOR
-    }
-
-
-    private fun setColorAnswer(): Int {
-        return RadioButtonProperties().RADIO_BUTTON_CORRECT_COLOR
     }
 
     override fun toggle() {
