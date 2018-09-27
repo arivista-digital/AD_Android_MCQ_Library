@@ -4,9 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
-class MainActivity : AppCompatActivity(), QuestionListener {
-
-    var questionPresenter: QuestionPresenter? = null
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,42 +29,28 @@ class MainActivity : AppCompatActivity(), QuestionListener {
 
         arivista_view.setQuestion("how to implement Radio Buttons?");
         arivista_view.setChoiceType(choicesList, ChoiceType.SINGLE)
-//        arivista_view.setQuestion("how to implement Checked Box?");
-//        arivista_view.setChoiceType(choicesList,ChoiceType.MULTIPLE)
-
 
         //Answer Submit
         submitBtn.setOnClickListener() {
             arivista_view.setSumbitAnswer(choicesList)
-            submitBtn.isEnabled = false
-            revealBtn!!.isEnabled = true
+            arivista_view.submitButtonVisibility(submitBtn,false)
         }
         //Clear Checked Radio Buttons
         clearBtn.setOnClickListener() {
             arivista_view.radioClearChecked()
-            revealBtn.isEnabled = false
-            submitBtn.isEnabled = false
-            clearBtn.isEnabled = false
+            arivista_view.revealButtonVisibility(revealBtn,false)
+            arivista_view.submitButtonVisibility(submitBtn,false)
+            arivista_view.clearButtonVisibility(clearBtn,false)
         }
         //Reveal Answers
         revealBtn.setOnClickListener() {
             arivista_view.answerReveal(choicesList)
-            submitBtn.isEnabled = false
-            clearBtn.isEnabled = true
+            arivista_view.submitButtonVisibility(submitBtn,false)
+            arivista_view.clearButtonVisibility(clearBtn,true)
         }
 
         //questionPresenter= QustionImplementation(this);
 
     }
 
-    //Success Listener
-    override fun onSuccess() {
-        questionPresenter!!.addCheckBox()
-        questionPresenter!!.addRadioButton()
-    }
-
-    //Failure Listener
-    override fun onFailure() {
-        questionPresenter!!.errorFound()
-    }
 }

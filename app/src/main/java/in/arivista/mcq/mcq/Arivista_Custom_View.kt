@@ -10,12 +10,11 @@ import android.widget.RadioGroup
 
 open class Arivista_Custom_View : LinearLayout {
 
-    var textview: ArivistaTextView? = null
     var radioButton: Arivista_RadioButton? = null
     var radioGroup: RadioGroup? = null
-    var submitBtn:Button?=null
-    var revealBtn:Button?=null
-    var clearBtn:Button?=null
+    var submitBtn: Button? = null
+    var revealBtn: Button? = null
+    var clearBtn: Button? = null
 
     var radioProperties = RadioButtonProperties()
 
@@ -46,7 +45,7 @@ open class Arivista_Custom_View : LinearLayout {
     fun addTextView(quetion: String) {
         View.inflate(context, R.layout.custom_layout, this)
         orientation = VERTICAL
-        val textView = ArivistaTextView(context)
+        val textView = Arivista_TextView(context)
         textView.setText(quetion)
         textView.setOnClickListener() {
             Toast.makeText(context, "Text Clicked", Toast.LENGTH_LONG).show()
@@ -63,43 +62,28 @@ open class Arivista_Custom_View : LinearLayout {
                 addRadioButton(choice.choiceText)
             }
             addView(radioGroup)
-        } else {
-            View.inflate(context, R.layout.custom_checkedbox, this)
-            for (choice in choices) {
-                addCheckedBox(choice.choiceText)
-            }
         }
     }
+
     //Add Radio Buttons
     fun addRadioButton(choice: String) {
         radioButton = Arivista_RadioButton(context)
-        //radioGroup.addView(radioButton)
         radioButton!!.setText(choice)
         radioGroup?.addView(radioButton)
 
         radioButton!!.setOnCheckedChangeListener() { compoundButton: CompoundButton, b: Boolean ->
-           //After number of question attend will calculated
             if (b) {
-                submitBtn!!.isEnabled=true
-                clearBtn!!.isEnabled=true
-              //  Toast.makeText(context, "changed", Toast.LENGTH_SHORT).show()
+                submitButtonVisibility(submitBtn!!,true)
+                clearButtonVisibility(clearBtn!!,true)
             }
         }
 
-    }
-
-    //Add Check boxes
-    fun addCheckedBox(choice: String) {
-        val checkBox = ArivistaCheckedButton(context)
-        checkBox.setText(choice)
-        addView(checkBox)
     }
 
     //Set question Titls
     fun setQuestion(quetion: String) {
         addTextView(quetion)
     }
-
 
     //Set Answered Color Correct or Wrong
     fun setSumbitAnswer(choicesList: ArrayList<QuestionModal>) {
@@ -161,30 +145,34 @@ open class Arivista_Custom_View : LinearLayout {
         }
     }
 
-    fun buttonInitialization(submit:Button,clear:Button,reveal:Button){
-        submitBtn=submit
-        clearBtn=clear
-        revealBtn=reveal
+    //MainActivity buttons initialization here
+    fun buttonInitialization(submit: Button, clear: Button, reveal: Button) {
+        submitBtn = submit
+        clearBtn = clear
+        revealBtn = reveal
     }
 
     //Submit button controls
-    fun submitButtonControl(submit:Button,control:Boolean){
-        if(control){
-            submit.isEnabled=true
-        }
+    fun submitButtonVisibility(submit: Button, visibility: Boolean) {
+
+        if (visibility)
+            submit.isEnabled = true
     }
 
     //Clear button controls
-    fun clearButtonControl(clear:Button,control:Boolean){
-        if(control){
-            clear.isEnabled=true
-        }
+    fun clearButtonVisibility(clear: Button, visibility: Boolean) {
+        if (visibility)
+            clear.isEnabled = true
+        else
+            clear.isEnabled = false
     }
 
     //Reveal button controls
-    fun revealButtonControl(reveal:Button,control:Boolean){
-        if(control){
-            reveal.isEnabled=true
-        }
+    fun revealButtonVisibility(reveal: Button, visibility: Boolean) {
+        if (visibility)
+            reveal.isEnabled = true
+        else
+            reveal.isEnabled = false
+
     }
 }

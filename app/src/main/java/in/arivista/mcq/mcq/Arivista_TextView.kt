@@ -1,13 +1,13 @@
 package `in`.arivista.mcq.mcq
 
 import android.content.Context
-import android.support.v7.widget.AppCompatCheckBox
-import android.support.v7.widget.AppCompatRadioButton
+import android.support.v7.widget.AppCompatTextView
 import android.util.AttributeSet
+import android.widget.TextView
 
-class ArivistaCheckedButton : AppCompatCheckBox {
+class Arivista_TextView : AppCompatTextView {
 
-    object properties: CheckButtonProperties()
+    object properties: TextViewProperties()
 
     constructor(context: Context) : super(context) {
         initView()
@@ -22,8 +22,9 @@ class ArivistaCheckedButton : AppCompatCheckBox {
     }
 
     fun initView() {
-        textSize = properties.CHECK_BUTTON_SIZE
-        setTextColor(properties.CHECK_BUTTON_DEFAULT_COLOR)
+        textSize = properties.DEFAULT_TEXT_FONT_SIZE
+        typeface = properties.DEFAULT_TEXT_FONT_FAMILIY
+        setTextColor(properties.DEFAULT_TEXT_FONT_COLOR)
     }
 
 
