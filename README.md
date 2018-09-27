@@ -53,7 +53,7 @@ val choicesList = ArrayList<QuestionModal>()
 ```
 
 ### Links ###
-* [Arivista MCA](https://bitbucket.org/sureshseeniss/mcq "Arivista MCQ")
+* [Arivista MCQ](https://bitbucket.org/sureshseeniss/mcq "Arivista MCQ")
 
 ### License ###
 
