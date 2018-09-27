@@ -47,7 +47,7 @@ open class Arivista_Custom_View : LinearLayout {
     }
 
     private fun init() {
-        View.inflate(context, R.layout.custom_radiobutton, this)
+
     }
 
     //Add TextView
@@ -68,7 +68,7 @@ open class Arivista_Custom_View : LinearLayout {
     fun setChoiceType(choices: ArrayList<ChoiceModel>, choiceType: ChoiceType) {
         choicesList = choices
         if (choiceType == ChoiceType.SINGLE) {
-
+            View.inflate(context, R.layout.custom_radiobutton, this)
             radioGroup = RadioGroup(context)
 
             for (choice in choices) {
@@ -76,6 +76,8 @@ open class Arivista_Custom_View : LinearLayout {
             }
             addView(radioGroup)
             addFormControlButtons()
+        }else{
+
         }
     }
 
