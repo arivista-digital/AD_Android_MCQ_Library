@@ -53,14 +53,9 @@ val choicesList = ArrayList<QuestionModal>()
 ```
 
 ### Links ###
-* [Arivista MCQ](https://bitbucket.org/sureshseeniss/mcq "Arivista MCQ")
+* [Arivista Digital Pvt Ltd](https://www.arivistadigital.org/ "Arivista")
 
 ### License ###
 
 * Copyright 2018 The Android Open Source Project, Inc.
 * Arivista Digital Pvt Ltd
-
-### Contacts ###
-
-* Arivista Digital Pvt Ltd
-* Android Team
