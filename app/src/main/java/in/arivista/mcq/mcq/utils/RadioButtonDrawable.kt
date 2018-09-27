@@ -1,5 +1,6 @@
-package `in`.arivista.mcq.mcq
+package `in`.arivista.mcq.mcq.utils
 
+import android.R
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
@@ -143,7 +144,7 @@ internal class RadioButtonDrawable private constructor(builder: Builder) : Drawa
     }
 
     override fun onStateChange(state: IntArray): Boolean {
-        val checked = Utils.hasState(state, android.R.attr.state_checked)
+        val checked = Utils.hasState(state, R.attr.state_checked)
         val color = mColorState!!.getColorForState(state, mCurColor)
         var needRedraw = false
 

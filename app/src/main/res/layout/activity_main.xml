@@ -8,36 +8,9 @@
     android:layout_height="wrap_content"
     tools:context=".MainActivity">
 
-    <in.arivista.mcq.mcq.Arivista_Custom_View
+    <in.arivista.mcq.mcq.choiceview.Arivista_Custom_View
         android:id="@+id/arivista_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:enabled="false"
-            android:text="Submit"
-            android:id="@+id/submit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:enabled="false"
-            android:text="Clear"
-            android:id="@+id/clear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:enabled="false"
-            android:text="Reveal"
-            android:id="@+id/reveal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
 
 </LinearLayout>
