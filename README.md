@@ -31,8 +31,8 @@
         android:layout_height="wrap_content" />
 ```
 * MainActivity Funtionalites
-
 * Add the questions
+
 ````
 val choicesList = ArrayList<QuestionModal>()
         choicesList.add(QuestionModal(1, "Option 1", true))
@@ -44,13 +44,16 @@ val choicesList = ArrayList<QuestionModal>()
 ```
       val arivista_view = findViewById(R.id.arivista_view) as Arivista_Custom_View
 ```
-```Set Qusetion just call the fuctions on custom view 
+
+*Set Qusetion just call the fuctions on custom view 
+
+```
   arivista_view.setQuestion("how to implement Radio Buttons?");
   arivista_view.setChoiceType(choicesList, ChoiceType.SINGLE)
 ```
 
 ### Links ###
-* 
+ [Arivista MCA](https://bitbucket.org/sureshseeniss/mcq "Arivista MCA")
 
 ### License ###
 
