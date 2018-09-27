@@ -22,7 +22,6 @@
 
 ### How to use ###
 
-![Alt text](C:\Users\admin\Pictures\course1.jpg)
  * activity_main Layout initialize
  
 ```
