@@ -236,26 +236,19 @@ open class Arivista_Custom_View : LinearLayout {
 
     //Submit button controls
     fun submitButtonVisibility(submit: Button, visibility: Boolean) {
-        if (visibility)
-            submit.isEnabled = true
-        else {
-            submit.isEnabled = false
-        }
+
+        submit.isEnabled = visibility
     }
 
     //Clear button controls
     fun clearButtonVisibility(clear: Button, visibility: Boolean) {
-        if (visibility)
-            clear.isEnabled = true
-        else
-            clear.isEnabled = false
+
+        clear.isEnabled = visibility
     }
 
     //Reveal button controls
     fun revealButtonVisibility(reveal: Button, visibility: Boolean) {
-        if (visibility)
-            reveal.isEnabled = true
-        else
-            reveal.isEnabled = false
+
+        reveal.isEnabled = visibility
     }
 }
