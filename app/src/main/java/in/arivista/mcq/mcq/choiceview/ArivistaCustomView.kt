@@ -270,9 +270,6 @@ open class ArivistaCustomView : LinearLayout {
                     else
                         radioButton!!.setColor(radioProperties.RADIO_BUTTON_WRONG_COLOR)
                     radioGroupList()
-                } else {
-
-                    Toast.makeText(context, "Please to select answer", Toast.LENGTH_LONG).show()
                 }
             } else {
 
@@ -367,6 +364,7 @@ open class ArivistaCustomView : LinearLayout {
                 item.isClickable = false
                 item.setTextColor(Color.GREEN)
             } else {
+                item.isEnabled=false
                 item.isChecked = false
             }
             i++
