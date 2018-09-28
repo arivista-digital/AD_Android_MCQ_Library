@@ -1,1 +1,1 @@
-include ':app', ':sample', ':samplemcq', ':sample_mcq'
+include ':app', ':sample', ':sample'
