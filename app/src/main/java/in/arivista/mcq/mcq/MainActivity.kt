@@ -1,11 +1,10 @@
 package `in`.arivista.mcq.mcq
 
 import `in`.arivista.mcq.mcq.choiceview.Arivista_Custom_View
-import `in`.arivista.mcq.mcq.utils.ChoiceType
 import `in`.arivista.mcq.mcq.model.ChoiceModel
-import android.support.v7.app.AppCompatActivity
+import `in`.arivista.mcq.mcq.utils.ChoiceType
 import android.os.Bundle
-import android.widget.Button
+import android.support.v7.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         choicesList1.add(ChoiceModel(3, "Option 3", true))
         choicesList1.add(ChoiceModel(4, "Option 4", false))
 
-        val arivista_view = findViewById(R.id.arivista_view) as Arivista_Custom_View
+        val arivista_view = findViewById<Arivista_Custom_View>(R.id.arivista_view)
 
         arivista_view.setQuestion("how to implement Radio Buttons?");
         arivista_view.setChoiceType(choicesList, ChoiceType.SINGLE)
