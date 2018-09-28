@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity() {
         arivista_view.setQuestion("how to implement Radio CheckedBox?");
         arivista_view.setChoiceType(choicesList1, ChoiceType.MULTIPLE)
 
-
     }
 
 }
