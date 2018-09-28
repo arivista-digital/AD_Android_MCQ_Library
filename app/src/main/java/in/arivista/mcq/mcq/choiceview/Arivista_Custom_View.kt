@@ -7,23 +7,36 @@ import `in`.arivista.mcq.mcq.model.ChoiceModel
 import `in`.arivista.mcq.mcq.utils.RadioButtonProperties
 import android.content.Context
 import android.graphics.Color
+import android.support.v7.widget.AppCompatCheckBox
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import android.widget.RadioGroup
+import android.widget.CheckBox
 
 
 open class Arivista_Custom_View : LinearLayout {
 
     var radioButton: Arivista_RadioButton? = null
+    var checkBox: AppCompatCheckBox? = null
     var radioGroup: RadioGroup? = null
+
     var submitBtn: Button? = null
     var revealBtn: Button? = null
     var clearBtn: Button? = null
-    var linearLayout:LinearLayout?=null
+
+    var linearLayout: LinearLayout? = null
+
+    var submitBtn1: Button? = null
+    var revealBtn1: Button? = null
+    var clearBtn1: Button? = null
+
+    var linearLayout1: LinearLayout? = null
 
     var choicesList = ArrayList<ChoiceModel>()
+
+    var items = ArrayList<CheckBox>()
 
     var radioProperties = RadioButtonProperties()
 
@@ -47,7 +60,7 @@ open class Arivista_Custom_View : LinearLayout {
     }
 
     private fun init() {
-        View.inflate(context, R.layout.custom_radiobutton, this)
+
     }
 
     //Add TextView
@@ -57,7 +70,7 @@ open class Arivista_Custom_View : LinearLayout {
         orientation = VERTICAL
 
         val textView = TextView(context)
-        textView.textSize=20f
+        textView.textSize = 20f
         textView.setTextColor(Color.BLACK)
         textView.setText(quetion)
 
@@ -68,7 +81,7 @@ open class Arivista_Custom_View : LinearLayout {
     fun setChoiceType(choices: ArrayList<ChoiceModel>, choiceType: ChoiceType) {
         choicesList = choices
         if (choiceType == ChoiceType.SINGLE) {
-
+            View.inflate(context, R.layout.custom_radiobutton, this)
             radioGroup = RadioGroup(context)
 
             for (choice in choices) {
@@ -76,6 +89,12 @@ open class Arivista_Custom_View : LinearLayout {
             }
             addView(radioGroup)
             addFormControlButtons()
+        } else {
+            View.inflate(context, R.layout.custom_checkbox, this)
+            for (choice in choices) {
+                addCheckedButton(choice.choiceText)
+            }
+            addFormControlButtons1()
         }
     }
 
@@ -96,29 +115,47 @@ open class Arivista_Custom_View : LinearLayout {
 
     }
 
+    //Add Radio Buttons
+    fun addCheckedButton(choice: String) {
+        checkBox = AppCompatCheckBox(context)
+        checkBox!!.setText(choice)
+        addView(checkBox)
+        items.add(checkBox!!)
+
+        //Radio Button Change Listener
+        checkBox!!.setOnCheckedChangeListener() { compoundButton: CompoundButton, b: Boolean ->
+            if (b) {
+
+                submitButtonVisibility(submitBtn1!!, true)
+                clearButtonVisibility(clearBtn1!!, true)
+            }
+        }
+
+    }
+
     //Add submit clear reveal Button
-    fun addFormControlButtons(){
+    fun addFormControlButtons() {
         linearLayout = LinearLayout(context)
         linearLayout!!.orientation = HORIZONTAL
 
         submitBtn = Button(context)
         submitBtn!!.text = "Submit"
-        submitBtn!!.width=ViewGroup.LayoutParams.WRAP_CONTENT
-        submitBtn!!.height=ViewGroup.LayoutParams.WRAP_CONTENT
-        submitButtonVisibility(submitBtn!!,false)
+        submitBtn!!.width = ViewGroup.LayoutParams.WRAP_CONTENT
+        submitBtn!!.height = ViewGroup.LayoutParams.WRAP_CONTENT
+        submitButtonVisibility(submitBtn!!, false)
 
 
         clearBtn = Button(context)
         clearBtn!!.text = "Clear"
-        clearBtn!!.width=ViewGroup.LayoutParams.WRAP_CONTENT
-        clearBtn!!.height=ViewGroup.LayoutParams.WRAP_CONTENT
-        clearButtonVisibility(clearBtn!!,false)
+        clearBtn!!.width = ViewGroup.LayoutParams.WRAP_CONTENT
+        clearBtn!!.height = ViewGroup.LayoutParams.WRAP_CONTENT
+        clearButtonVisibility(clearBtn!!, false)
 
         revealBtn = Button(context)
         revealBtn!!.text = "Reveal"
-        revealBtn!!.width=ViewGroup.LayoutParams.WRAP_CONTENT
-        revealBtn!!.height=ViewGroup.LayoutParams.WRAP_CONTENT
-        revealButtonVisibility(revealBtn!!,false)
+        revealBtn!!.width = ViewGroup.LayoutParams.WRAP_CONTENT
+        revealBtn!!.height = ViewGroup.LayoutParams.WRAP_CONTENT
+        revealButtonVisibility(revealBtn!!, false)
 
 
         linearLayout!!.addView(submitBtn)
@@ -153,6 +190,65 @@ open class Arivista_Custom_View : LinearLayout {
         }
     }
 
+
+    //Add submit clear reveal Button
+    fun addFormControlButtons1() {
+        linearLayout1 = LinearLayout(context)
+        linearLayout!!.orientation = HORIZONTAL
+
+        submitBtn1 = Button(context)
+        submitBtn1!!.text = "Submit"
+        submitBtn1!!.width = ViewGroup.LayoutParams.WRAP_CONTENT
+        submitBtn1!!.height = ViewGroup.LayoutParams.WRAP_CONTENT
+        submitButtonVisibility(submitBtn1!!, false)
+
+
+        clearBtn1 = Button(context)
+        clearBtn1!!.text = "Clear"
+        clearBtn1!!.width = ViewGroup.LayoutParams.WRAP_CONTENT
+        clearBtn1!!.height = ViewGroup.LayoutParams.WRAP_CONTENT
+        clearButtonVisibility(clearBtn1!!, false)
+
+        revealBtn1 = Button(context)
+        revealBtn1!!.text = "Reveal"
+        revealBtn1!!.width = ViewGroup.LayoutParams.WRAP_CONTENT
+        revealBtn1!!.height = ViewGroup.LayoutParams.WRAP_CONTENT
+        revealButtonVisibility(revealBtn1!!, false)
+
+
+        linearLayout1!!.addView(submitBtn1)
+        linearLayout1!!.addView(clearBtn1)
+        linearLayout1!!.addView(revealBtn1)
+
+        addView(linearLayout1)
+
+        //Answer Submit listener
+        submitBtn1!!.setOnClickListener() {
+
+            setSumbitAnswer1(choicesList)
+            submitButtonVisibility(submitBtn1!!, false)
+            revealButtonVisibility(revealBtn1!!, true)
+        }
+        //Clear Checked Radio Buttons
+        clearBtn1!!.setOnClickListener() {
+
+            revealButtonVisibility(revealBtn1!!, false)
+            submitButtonVisibility(submitBtn1!!, false)
+            clearButtonVisibility(clearBtn1!!, false)
+            radioClearChecked1()
+
+        }
+        //Reveal Answers
+        revealBtn1!!.setOnClickListener() {
+
+            answerReveal1(choicesList)
+            submitButtonVisibility(submitBtn1!!, false)
+            clearButtonVisibility(clearBtn1!!, true)
+            revealButtonVisibility(revealBtn1!!, false)
+        }
+    }
+
+
     //Set question Titls
     fun setQuestion(quetion: String) {
         addTextView(quetion)
@@ -162,7 +258,6 @@ open class Arivista_Custom_View : LinearLayout {
     fun setSumbitAnswer(choicesList: ArrayList<ChoiceModel>) {
 
         try {
-
             val checkedRadioButtonId = radioGroup!!.getCheckedRadioButtonId()
 
             if (checkedRadioButtonId != 0) {
@@ -190,6 +285,21 @@ open class Arivista_Custom_View : LinearLayout {
         }
     }
 
+    //Set Answered Color Correct or Wrong
+    fun setSumbitAnswer1(choicesList: ArrayList<ChoiceModel>) {
+        var i = 0
+        for (item in items) {
+            if (choicesList.get(i).isC_ans_w_ans && item.isChecked) {
+                // val text: String = item.text.toString()
+                item.isClickable = false
+            } else {
+                item.isEnabled = false
+                item.isChecked = false
+            }
+            i++
+        }
+    }
+
     //Reset colors in radio buttons
     fun radioGroupList() {
 
@@ -214,6 +324,14 @@ open class Arivista_Custom_View : LinearLayout {
         radioGroup!!.clearCheck()
     }
 
+    fun radioClearChecked1() {
+        for (item in items) {
+            item.isEnabled = true
+            item.isChecked = false
+            item.isClickable = true
+        }
+    }
+
     //Reveal Answer
     fun answerReveal(choicesList: ArrayList<ChoiceModel>) {
 
@@ -231,6 +349,21 @@ open class Arivista_Custom_View : LinearLayout {
                 b.isChecked = false
                 b.isEnabled = false
             }
+        }
+    }
+
+    //Reveal check Box Answer
+    fun answerReveal1(choicesList: ArrayList<ChoiceModel>) {
+        var i = 0;
+        for (item in items) {
+            if (choicesList.get(i).isC_ans_w_ans) {
+                item.isChecked = true
+                item.isEnabled = true
+                item.isClickable = false
+            } else {
+                item.isChecked = false
+            }
+            i++
         }
     }
 
