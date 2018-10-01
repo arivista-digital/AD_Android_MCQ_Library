@@ -56,6 +56,7 @@ class ArivistaRadioButton : android.support.v7.widget.AppCompatRadioButton {
 
     }
 
+    //Set color
     fun setColor(value: Int) {
         val drawable = RadioButtonDrawable.Builder()
                 .inAnimDuration(mInAnimDuration)
@@ -74,6 +75,7 @@ class ArivistaRadioButton : android.support.v7.widget.AppCompatRadioButton {
         drawable.setAnimEnable(true)
     }
 
+    //set default color
     private fun setColorDefault(): Int {
         return RadioButtonProperties().RADIO_BUTTON_DEFAULT_COLOR
     }

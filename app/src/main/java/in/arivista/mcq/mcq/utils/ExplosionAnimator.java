@@ -18,6 +18,7 @@ class ExplosionAnimator extends ValueAnimator {
     private int mOuterRadius = 10 ;
     private int mInnerRadius = 10 ;
 
+    //Constructor
     ExplosionAnimator(RadioButtonDrawable container, Rect bound , int color, int number,int outerRadius
     ,int innerRadius) {
         mInnerRadius= innerRadius;
@@ -53,6 +54,7 @@ class ExplosionAnimator extends ValueAnimator {
         return particle;
     }
 
+    //Drawing pixels
     boolean draw(Canvas canvas) {
         if (!isRunning()) {
             return false;

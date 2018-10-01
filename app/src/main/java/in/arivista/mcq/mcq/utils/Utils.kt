@@ -6,10 +6,12 @@ internal object Utils {
 
     private val DENSITY = Resources.getSystem().displayMetrics.density
 
+    //dp to pixel
     fun dp2Px(dp: Int): Int {
         return Math.round(dp * DENSITY)
     }
 
+    //current state of radio button
     fun hasState(states: IntArray?, state: Int): Boolean {
         if (states == null)
             return false

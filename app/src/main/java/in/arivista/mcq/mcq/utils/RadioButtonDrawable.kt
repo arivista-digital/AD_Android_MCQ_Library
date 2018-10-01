@@ -92,6 +92,7 @@ internal class RadioButtonDrawable private constructor(builder: Builder) : Drawa
             drawUnchecked(canvas)
     }
 
+    //Checked Radio Button design
     private fun drawChecked(canvas: Canvas) {
         val cx = bounds.exactCenterX()
         val cy = bounds.exactCenterY()
@@ -119,6 +120,7 @@ internal class RadioButtonDrawable private constructor(builder: Builder) : Drawa
         }
     }
 
+    //UnChecked box design
     private fun drawUnchecked(canvas: Canvas) {
         val cx = bounds.exactCenterX()
         val cy = bounds.exactCenterY()
@@ -143,6 +145,7 @@ internal class RadioButtonDrawable private constructor(builder: Builder) : Drawa
             mExplosionsAnimator!!.draw(canvas)
     }
 
+    //State Change design
     override fun onStateChange(state: IntArray): Boolean {
         val checked = Utils.hasState(state, R.attr.state_checked)
         val color = mColorState!!.getColorForState(state, mCurColor)
@@ -197,6 +200,7 @@ internal class RadioButtonDrawable private constructor(builder: Builder) : Drawa
         return mRunning
     }
 
+    //Animation start
     private fun startScaleAnimation() {
         mEntranceAnimator = ValueAnimator.ofFloat(0f, 0.1f, 0f, -0.1f, 0f, 0.04f, 0f).setDuration(mInAnimDuration.toLong())
         mEntranceAnimator!!.addUpdateListener { valueAnimator ->
@@ -223,6 +227,7 @@ internal class RadioButtonDrawable private constructor(builder: Builder) : Drawa
         mEntranceAnimator!!.start()
     }
 
+    //Update the view
     private fun update() {
         mRunning = true
         val animator = ValueAnimator.ofFloat(0F, 1f)
@@ -234,6 +239,7 @@ internal class RadioButtonDrawable private constructor(builder: Builder) : Drawa
         animator.start()
     }
 
+    //Inner class in builder
     internal class Builder {
 
         var mInAnimDuration: Int = 0
@@ -247,7 +253,7 @@ internal class RadioButtonDrawable private constructor(builder: Builder) : Drawa
         var mOuterPadding: Int = 0
         var mColorStateList: ColorStateList? = null
 
-
+        //set drawable button
         fun build(): RadioButtonDrawable {
             val states = arrayOf(intArrayOf(-android.R.attr.state_checked), intArrayOf(android.R.attr.state_checked))
             val colors = intArrayOf(mUnCheckedColor, mCheckedColor)
@@ -257,46 +263,55 @@ internal class RadioButtonDrawable private constructor(builder: Builder) : Drawa
         }
 
 
+        //set stroke size
         fun strokeSize(size: Int): Builder {
             mStrokeSize = size
             return this
         }
 
+        // set exploded count
         fun explodeCount(count: Int): Builder {
             mExplodeCounts = count
             return this
         }
 
+        //set checked color
         fun checkedColor(color: Int): Builder {
             mCheckedColor = color
             return this
         }
 
+        // set unchecked color
         fun unCheckedColor(color: Int): Builder {
             mUnCheckedColor = color
             return this
         }
 
+        //set radius
         fun radius(radius: Int): Builder {
             mRadius = radius
             return this
         }
 
+        //Set inner radius
         fun innerRadius(radius: Int): Builder {
             mInnerRadius = radius
             return this
         }
 
+        //Set out animation Duration
         fun outAnimDuration(duration: Int): Builder {
             mOutAnimDuration = duration
             return this
         }
 
+        //Set Animation Duration
         fun inAnimDuration(duration: Int): Builder {
             mInAnimDuration = duration
             return this
         }
 
+        //Set outer padding
         fun outerPadding(padding: Int): Builder {
             mOuterPadding = padding
             return this
