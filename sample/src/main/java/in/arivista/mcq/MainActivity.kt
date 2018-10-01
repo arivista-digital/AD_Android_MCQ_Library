@@ -22,17 +22,17 @@ class MainActivity : AppCompatActivity() {
 
 
         val choicesList1 = ArrayList<ChoiceModel>()
-        choicesList1.add(ChoiceModel(1, "Option 1", true))
-        choicesList1.add(ChoiceModel(2, "Option 2", false))
-        choicesList1.add(ChoiceModel(3, "Option 3", true))
-        choicesList1.add(ChoiceModel(4, "Option 4", false))
+        choicesList1.add(ChoiceModel(1, "1. Idily", true))
+        choicesList1.add(ChoiceModel(2, "2. Pongal", true))
+        choicesList1.add(ChoiceModel(3, "3. Chicken", false))
+        choicesList1.add(ChoiceModel(4, "4. Meat", false))
 
         val arivistaview = findViewById<ArivistaCustomView>(R.id.arivista_view)
 
         arivistaview.setQuestion("You are my brother, But I am not your brother?");
         arivistaview.setChoiceType(choicesListques1, ChoiceType.SINGLE)
 
-        arivistaview.setQuestion("how to implement Radio CheckedBox?");
+        arivistaview.setQuestion("What kind of Food is Good at morning session?")
         arivistaview.setChoiceType(choicesList1, ChoiceType.MULTIPLE)
 
 
