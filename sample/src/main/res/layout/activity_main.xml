@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <in.arivista.mcq.mcq.choiceview.ArivistaCustomView
+    <in.arivista.mcq.mcq.choiceview.ArivistaChoiceView
         android:id="@+id/arivista_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

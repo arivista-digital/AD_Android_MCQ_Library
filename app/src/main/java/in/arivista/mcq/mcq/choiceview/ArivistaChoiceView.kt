@@ -1,9 +1,9 @@
 package `in`.arivista.mcq.mcq.choiceview
 
 
-import `in`.arivista.mcq.mcq.*
-import `in`.arivista.mcq.mcq.utils.ChoiceType
+import `in`.arivista.mcq.mcq.R
 import `in`.arivista.mcq.mcq.model.ChoiceModel
+import `in`.arivista.mcq.mcq.utils.ChoiceType
 import `in`.arivista.mcq.mcq.utils.RadioButtonProperties
 import android.content.Context
 import android.graphics.Color
@@ -12,10 +12,9 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import android.widget.RadioGroup
 
 
-open class ArivistaCustomView : LinearLayout {
+open class ArivistaChoiceView : LinearLayout {
 
     var radioButton: ArivistaRadioButton? = null
     var checkBox: AppCompatCheckBox? = null
