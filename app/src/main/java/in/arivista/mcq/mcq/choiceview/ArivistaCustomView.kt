@@ -113,7 +113,6 @@ open class ArivistaCustomView : LinearLayout {
                 clearButtonVisibility(clearBtn!!, true)
             }
         }
-
     }
 
     //Add CheckBoxes
