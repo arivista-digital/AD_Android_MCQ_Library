@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         choicesList1.add(ChoiceModel(3, "Option 3", true))
         choicesList1.add(ChoiceModel(4, "Option 4", false))
 
-        val arivistaview = findViewById<ArivistaCustomView>(R.id.arivista_view)
+        val arivistaview = findViewById<ArivistaChoiceView>(R.id.arivista_view)
 
         arivistaview.setQuestion("You are my brother, But I am not your brother?");
         arivistaview.setChoiceType(choicesListques1, ChoiceType.SINGLE)
