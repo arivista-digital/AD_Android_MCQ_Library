@@ -1,6 +1,6 @@
 package `in`.arivista.mcq
 
-import `in`.arivista.mcq.mcq.choiceview.ArivistaCustomView
+import `in`.arivista.mcq.mcq.choiceview.ArivistaChoiceView
 import `in`.arivista.mcq.mcq.model.ChoiceModel
 import `in`.arivista.mcq.mcq.utils.ChoiceType
 import android.os.Bundle
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         choicesList1.add(ChoiceModel(3, "3. Chicken", false))
         choicesList1.add(ChoiceModel(4, "4. Meat", false))
 
-        val arivistaview = findViewById<ArivistaCustomView>(R.id.arivista_view)
+        val arivistaview = findViewById<ArivistaChoiceView>(R.id.arivista_view)
 
         arivistaview.setQuestion("You are my brother, But I am not your brother?");
         arivistaview.setChoiceType(choicesListques1, ChoiceType.SINGLE)
