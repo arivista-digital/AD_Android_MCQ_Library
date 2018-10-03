@@ -12,6 +12,12 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import android.content.res.ColorStateList
+import android.support.v4.widget.CompoundButtonCompat
+import android.support.v4.widget.CompoundButtonCompat.setButtonTintList
+import android.widget.CheckBox
+
+
 
 
 open class ArivistaChoiceView : LinearLayout {
@@ -118,14 +124,17 @@ open class ArivistaChoiceView : LinearLayout {
     //Add CheckBoxes
     fun addCheckBoxs(choice: String) {
         checkBox = AppCompatCheckBox(context)
+
         checkBox!!.setText(choice)
+
+        setCheckBoxColor(checkBox!!,Color.BLACK,Color.GRAY)
+
         addView(checkBox)
         items.add(checkBox!!)
 
         //Radio Button Change Listener
         checkBox!!.setOnCheckedChangeListener() { compoundButton: CompoundButton, b: Boolean ->
             if (b) {
-
                 submitButtonVisibility(submitBtn1!!, true)
                 clearButtonVisibility(clearBtn1!!, true)
             }
@@ -193,7 +202,7 @@ open class ArivistaChoiceView : LinearLayout {
     //Add submit clear reveal Button
     fun addFormControlButtonsMulti() {
         linearLayout1 = LinearLayout(context)
-        linearLayout!!.orientation = HORIZONTAL
+        linearLayout1!!.orientation = HORIZONTAL
 
         submitBtn1 = Button(context)
         submitBtn1!!.text = "Submit"
@@ -287,10 +296,12 @@ open class ArivistaChoiceView : LinearLayout {
         for (item in items) {
             if (choicesList.get(i).isC_ans_w_ans && item.isChecked) {
                 item.isClickable = false
-                item.setTextColor(Color.GREEN)
+               // item.setTextColor(Color.GREEN)
+                setCheckBoxColor(item,Color.GREEN,Color.RED)
             } else {
                 if(item.isChecked){
-                    item.setTextColor(Color.RED)
+                    //item.setTextColor(Color.RED)
+                    setCheckBoxColor(item,Color.RED,Color.GRAY)
                 }else{
                     item.isEnabled = false
                 }
@@ -329,7 +340,8 @@ open class ArivistaChoiceView : LinearLayout {
             item.isEnabled = true
             item.isChecked = false
             item.isClickable = true
-            item.setTextColor(Color.BLACK)
+           // item.setTextColor(Color.BLACK)
+            setCheckBoxColor(item,Color.BLACK,Color.GRAY)
         }
     }
 
@@ -341,9 +353,9 @@ open class ArivistaChoiceView : LinearLayout {
             val b = radioGroup!!.getChildAt(i) as ArivistaRadioButton
 
             if (choicesList.get(i).isC_ans_w_ans) {
-
                 b.isChecked = true
                 b.setColor(radioProperties.RADIO_BUTTON_CORRECT_COLOR)
+                b.isEnabled=true
             } else {
 
                 b.setColor(radioProperties.RADIO_BUTTON_DEFAULT_COLOR)
@@ -361,7 +373,8 @@ open class ArivistaChoiceView : LinearLayout {
                 item.isChecked = true
                 item.isEnabled = true
                 item.isClickable = false
-                item.setTextColor(Color.GREEN)
+                //item.setTextColor(Color.GREEN)
+                setCheckBoxColor(item,Color.GREEN,Color.GRAY)
             } else {
                 item.isEnabled=false
                 item.isChecked = false
@@ -386,5 +399,11 @@ open class ArivistaChoiceView : LinearLayout {
     fun revealButtonVisibility(reveal: Button, visibility: Boolean) {
 
         reveal.isEnabled = visibility
+    }
+
+    fun setCheckBoxColor(checkBox: AppCompatCheckBox, checkedColor: Int, uncheckedColor: Int) {
+        val states = arrayOf(intArrayOf(android.R.attr.state_checked), intArrayOf())
+        val colors = intArrayOf(checkedColor, uncheckedColor)
+        CompoundButtonCompat.setButtonTintList(checkBox, ColorStateList(states, colors))
     }
 }

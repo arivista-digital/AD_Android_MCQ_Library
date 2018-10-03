@@ -7,4 +7,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="checkBoxStyle" parent="Theme.AppCompat">
+        <item name="colorAccent">#000</item>
+        <item name="android:textColorSecondary">#fff</item>
+    </style>
 </resources>

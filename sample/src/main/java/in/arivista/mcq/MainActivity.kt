@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         choicesList1.add(ChoiceModel(3, "3. Chicken", false))
         choicesList1.add(ChoiceModel(4, "4. Meat", false))
 
+
         val arivistaview = findViewById<ArivistaChoiceView>(R.id.arivista_view)
 
         arivistaview.setQuestion("You are my brother, But I am not your brother?");
@@ -34,7 +35,6 @@ class MainActivity : AppCompatActivity() {
 
         arivistaview.setQuestion("What kind of Food is Good at morning session?")
         arivistaview.setChoiceType(choicesList1, ChoiceType.MULTIPLE)
-
 
     }
 }
