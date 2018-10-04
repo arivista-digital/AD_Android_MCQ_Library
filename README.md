@@ -65,6 +65,10 @@ val choicesList = ArrayList<QuestionModal>()
   arivista_view.setChoiceType(choicesList, ChoiceType.SINGLE)
 ```
 
+### Screenshots ###
+
+(https://bitbucket.org/sureshseeniss/mcq/src/master/app/screenshots/mcq.gif)
+
 ### Links ###
 * [Arivista Digital Pvt Ltd](https://www.arivistadigital.org/ "Arivista")
 
