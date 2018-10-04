@@ -72,7 +72,7 @@
 
 ### GIF ###
 
- ![Alt text](/app/screenshots/mcq.gif)
+ ![MCQ Gif](/app/screenshots/mcq.gif)
 
 ### Links ###
 * [Arivista Digital Pvt Ltd](https://www.arivistadigital.org/ "Arivista")
