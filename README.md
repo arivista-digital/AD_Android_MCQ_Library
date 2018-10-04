@@ -67,7 +67,6 @@ val choicesList = ArrayList<QuestionModal>()
 
 ### Screenshots ###
 
- ![Scheme](https://bitbucket.org/sureshseeniss/mcq/src/master/app/screenshots/mcq.gif)
  ![Alt text](/app/screenshots/mcq.gif)
 
 ### Links ###
