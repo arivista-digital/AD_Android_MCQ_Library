@@ -7,9 +7,9 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".MainActivity">
+    tools:context="arivista.lib.mcq.MainActivity">
 
-    <in.arivista.mcq.mcq.choiceview.ArivistaChoiceView
+    <arivista.lib.mcq.choiceview.ArivistaChoiceView
         android:id="@+id/arivista_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

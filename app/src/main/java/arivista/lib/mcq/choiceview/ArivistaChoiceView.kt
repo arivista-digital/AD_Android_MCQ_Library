@@ -1,10 +1,10 @@
-package `in`.arivista.mcq.mcq.choiceview
+package arivista.lib.mcq.choiceview
 
 
 import `in`.arivista.mcq.mcq.R
-import `in`.arivista.mcq.mcq.model.ChoiceModel
-import `in`.arivista.mcq.mcq.utils.ChoiceType
-import `in`.arivista.mcq.mcq.utils.RadioButtonProperties
+import arivista.lib.mcq.model.ChoiceModel
+import arivista.lib.mcq.utils.ChoiceType
+import arivista.lib.mcq.utils.RadioButtonProperties
 import android.content.Context
 import android.graphics.Color
 import android.support.v7.widget.AppCompatCheckBox
@@ -14,10 +14,6 @@ import android.view.ViewGroup
 import android.widget.*
 import android.content.res.ColorStateList
 import android.support.v4.widget.CompoundButtonCompat
-import android.support.v4.widget.CompoundButtonCompat.setButtonTintList
-import android.widget.CheckBox
-
-
 
 
 open class ArivistaChoiceView : LinearLayout {

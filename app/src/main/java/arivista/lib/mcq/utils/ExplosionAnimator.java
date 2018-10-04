@@ -1,4 +1,4 @@
-package in.arivista.mcq.mcq.utils;
+package arivista.lib.mcq.utils;
 
 import android.animation.ValueAnimator;
 import android.graphics.Canvas;

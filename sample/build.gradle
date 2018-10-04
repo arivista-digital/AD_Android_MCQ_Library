@@ -7,7 +7,7 @@ android {
 
 
     defaultConfig {
-        applicationId "in.arivista.mcq"
+        applicationId "arivista.lib.mcq"
         minSdkVersion 17
         targetSdkVersion 28
         versionCode 1

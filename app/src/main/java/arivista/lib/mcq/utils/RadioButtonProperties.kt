@@ -1,7 +1,6 @@
-package `in`.arivista.mcq.mcq.utils
+package arivista.lib.mcq.utils
 
 import android.graphics.Color
-import android.graphics.Typeface
 
 
 //Define radio button properties

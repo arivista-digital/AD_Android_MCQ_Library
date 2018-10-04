@@ -1,4 +1,4 @@
-package `in`.arivista.mcq.mcq.utils
+package arivista.lib.mcq.utils
 
 import android.content.res.Resources
 

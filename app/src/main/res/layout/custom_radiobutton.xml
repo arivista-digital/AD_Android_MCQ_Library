@@ -6,7 +6,7 @@
     android:layout_margin="10dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <in.arivista.mcq.mcq.choiceview.ArivistaRadioButton
+    <arivista.lib.mcq.choiceview.ArivistaRadioButton
         android:visibility="gone"
         android:id="@+id/arivista_radioButton"
         android:layout_width="match_parent"
