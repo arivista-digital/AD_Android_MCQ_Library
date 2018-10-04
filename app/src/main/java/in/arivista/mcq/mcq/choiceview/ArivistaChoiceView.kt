@@ -401,6 +401,8 @@ open class ArivistaChoiceView : LinearLayout {
         reveal.isEnabled = visibility
     }
 
+
+    //Set checkbox color
     fun setCheckBoxColor(checkBox: AppCompatCheckBox, checkedColor: Int, uncheckedColor: Int) {
         val states = arrayOf(intArrayOf(android.R.attr.state_checked), intArrayOf())
         val colors = intArrayOf(checkedColor, uncheckedColor)
