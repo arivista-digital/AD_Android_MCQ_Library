@@ -70,7 +70,7 @@
         arivistaview.setChoiceType(choicesMulti, ChoiceType.MULTIPLE)
 ```
 
-### Screenshots ###
+### GIF ###
 
  ![Alt text](/app/screenshots/mcq.gif)
 
