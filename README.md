@@ -28,7 +28,7 @@
  * activity_main Layout initialize
  
 ```
-<in.arivista.mcq.mcq.Arivista_Custom_View
+<arivista.lib.mcq.choiceview.ArivistaChoiceView
         android:id="@+id/arivista_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -37,33 +37,42 @@
 * Add the questions
 ### Single Choice Questions ###
 ```
-val choicesList = ArrayList<QuestionModal>()
-        choicesList.add(QuestionModal(1, "Option 1", true))
-        choicesList.add(QuestionModal(2, "Option 2", false))
-        choicesList.add(QuestionModal(3, "Option 3", false))
-        choicesList.add(QuestionModal(4, "Option 4", false))
+ val choicesSingle = ArrayList<ChoiceModel>()
+        choicesSingle.add(ChoiceModel(1, "Option 1", false))
+        choicesSingle.add(ChoiceModel(2, "Option 2", false))
+        choicesSingle.add(ChoiceModel(3, "Option 3", false))
+        choicesSingle.add(ChoiceModel(4, "Option 4", true))
+        choicesSingle.add(ChoiceModel(5, "Option 5", false))
 ```
 ### Mutiple Choice Questions ###
 
 ```
-val choicesList = ArrayList<QuestionModal>()
-        choicesList.add(QuestionModal(1, "Option 1", true))
-        choicesList.add(QuestionModal(2, "Option 2", false))
-        choicesList.add(QuestionModal(3, "Option 3", true))
-        choicesList.add(QuestionModal(4, "Option 4", false))
+ val choicesMulti = ArrayList<ChoiceModel>()
+        choicesMulti.add(ChoiceModel(1, "Option 1", true))
+        choicesMulti.add(ChoiceModel(2, "Option 2", true))
+        choicesMulti.add(ChoiceModel(3, "Option 3", false))
+        choicesMulti.add(ChoiceModel(4, "Option 4", false))
+        choicesMulti.add(ChoiceModel(5, "Option 5", false))
 ```
 
 * Custom view object creation
 ```
-      val arivista_view = findViewById(R.id.arivista_view) as Arivista_Custom_View
+      val arivistaview = findViewById<ArivistaChoiceView>(R.id.arivista_view)
 ```
 
 * Set Qusetion just call the fuctions on custom view 
 
 ```
-  arivista_view.setQuestion("how to implement Radio Buttons?");
-  arivista_view.setChoiceType(choicesList, ChoiceType.SINGLE)
+        arivistaview.setQuestion("Single choice question?");
+        arivistaview.setChoiceType(choicesSingle, ChoiceType.SINGLE)
+
+        arivistaview.setQuestion("Multi choice question?")
+        arivistaview.setChoiceType(choicesMulti, ChoiceType.MULTIPLE)
 ```
+
+### Screenshots ###
+
+ ![Alt text](/app/screenshots/mcq.gif)
 
 ### Links ###
 * [Arivista Digital Pvt Ltd](https://www.arivistadigital.org/ "Arivista")
